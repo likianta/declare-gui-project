@@ -1,5 +1,6 @@
 from .dict_tree import DictTreeEx
-from .keywords import parent, this
+from .keywords import parent
+from .keywords import this
 from .uid_system import id_ref
 
 

@@ -1,5 +1,6 @@
 from collections import defaultdict
-from typing import Optional, Union
+from typing import Optional
+from typing import Union
 
 
 class UIDGenerator:

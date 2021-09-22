@@ -1,5 +1,9 @@
-from ..context_manager import context, parent, this
-from ..context_manager.uid_system import UID, gen_id, id_ref
+from ..context_manager import context
+from ..context_manager import parent
+from ..context_manager import this
+from ..context_manager.uid_system import UID
+from ..context_manager.uid_system import gen_id
+from ..context_manager.uid_system import id_ref
 
 
 class BaseComponent:
@@ -14,9 +18,15 @@ class BaseComponent:
     #   see usage at `self.__exit__`
     #   see working principle at `ExitLockCount:docstring:作用机制`
     
+    def bind(self):
+        pass
+    
+    def gain(self):
+        pass
+    
     def build(self):
         """
-        build self contained components (aka children components) within self's
+        Build self contained components (aka children components) within self's
         context.
         
         Examples:
@@ -84,10 +94,10 @@ class BaseComponent:
         
         this.point_to(id_ref[(pid := self.uid.parent_id)])
         parent.point_to(id_ref[pid.parent_id] if pid else None)
-
+    
     def _enter_extra(self):
         raise NotImplementedError
-
+    
     def _exit_extra(self, child_com, parent_com):
         """
         Caller:
