@@ -1,3 +1,6 @@
+from typing import List
+from typing import Optional
+
 from ..context_manager import context
 from ..context_manager import parent
 from ..context_manager import this
@@ -7,13 +10,18 @@ from ..context_manager.uid_system import id_ref
 
 
 class BaseComponent:
+    parent: Optional['BaseComponent']
+    children: List['BaseComponent']
+    
+    # initialized at `self.__enter__`
     level: int
     uid: UID
     
-    # parent: Optional['BaseComponent']
-    # children: list['BaseComponent']
-    
     __exit_lock: int
+    
+    def __init__(self):
+        self.parent = None
+        self.children = []
     
     def bind(self, *args, **kwargs):
         pass
@@ -46,8 +54,6 @@ class BaseComponent:
             This method is not recommended to override. You can use `self
             ._inject_enter_code` instead.
         """
-        # self.parent = None
-        # self.children = []
         global _com_exit_lock
         self.__exit_lock = _com_exit_lock.fetch_lock()
         
@@ -63,6 +69,9 @@ class BaseComponent:
         #   after `context.update`, `this` and `parent` now work as expected.
         #   i.e. now `this` represents `self`, and `parent` represents
         #   `last_com`.
+        
+        self.parent = parent.represents
+        self.parent.children.append(self)
         
         self._inject_enter_code()
         
