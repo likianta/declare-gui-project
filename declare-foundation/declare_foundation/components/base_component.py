@@ -1,7 +1,7 @@
 from typing import List
 from typing import Optional
 
-from ..context_manager import context
+from ..context_manager import ctx_mgr
 from ..context_manager import parent
 from ..context_manager import this
 from ..context_manager.uid_system import UID
@@ -65,7 +65,7 @@ class BaseComponent:
         self.level = last_com.level + 1 if last_com is not None else 0
         self.uid = gen_id(self.level)
         
-        context.update(self.uid, self.level, self, last_com)
+        ctx_mgr.update(self.uid, self.level, self, last_com)
         #   after `context.update`, `this` and `parent` now work as expected.
         #   i.e. now `this` represents `self`, and `parent` represents
         #   `last_com`.

@@ -1,4 +1,5 @@
-from .context import context
+from .context import Context
+from .context import ctx_mgr
 from .keywords import parent
 from .keywords import this
 from .uid_system import gen_id
