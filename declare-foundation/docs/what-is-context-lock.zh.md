@@ -31,7 +31,6 @@ def some_view():
 with Window() as win:
     with Build(some_view) as view:
     #    ^^^^^^^^^^^^^^^^ C
-        pass
         with Image() as img:
             pass  # B
 ```
