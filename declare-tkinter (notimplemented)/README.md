@@ -28,7 +28,7 @@ with Application() as app:  # -> tkinter.Tk
     # execute `app.mainloop()` in `app.__exit__`
 ```
 
-Which equals to:
+Equivalent to:
 
 ```py
 from tkinter import *

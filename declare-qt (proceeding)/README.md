@@ -21,7 +21,7 @@ with Application() as app:
     # execute `sys.exit(app.exec_())` in `app.__exit__`
 ```
 
-Which equals to:
+Equivalent to:
 
 ```py
 from sys import exit

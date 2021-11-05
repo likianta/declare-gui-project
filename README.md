@@ -23,10 +23,9 @@ with Application() as app:
 ```
 
 ```py
-# declare-qml: https://github.com/likianta/declare-qml
-from declare_qml import Applicatin
-from declare_qml.qtquick import Rectangle, Text, MouseArea
-from declare_qml.qtquick.windows import Window
+# declare-qtquick: https://github.com/likianta/declare-qtquick
+from declare_qtquick import Applicatin
+from declare_qtquick.windows import MouseArea, Rectangle, Text, Window
 from lk_lambdex import lambdex
 
 with Application() as app:
@@ -37,22 +36,20 @@ with Application() as app:
         win.visible = True
 
         with Rectangle() as rect:
+            rect.anchors.center = win.center
             rect.width = 400
             rect.height = 300
-            rect.anchors.center = win.center
             rect.color = 'navyblue'
             rect.radius = 12
 
             with Text() as txt:
                 txt.anchors.center = rect.center
                 txt.text = 'Hello World'
-                txt.count = 0
 
             with MouseArea() as area:
                 area.anchors.fill = rect
                 area.on_clicked.connect(lambdex((), '''
-                    txt.count += 1
-                    txt.text = f'Text Clicked ({txt.count})'
+                    txt.text += '!'
                 '''))
 ```
 
@@ -75,9 +72,9 @@ with Application() as app:
 
 它们具有以下共同特性:
 
-1. 声明式语法的支持由 [declare-foundation](./declare-foundation) 库统一实现, 因此写法上具有一致性
-2. 通常来说, 与原有的界面库相比较, 编写同一应用的代码量明显减少
-3. 纯 Python 实现
+1. 声明式语法的支持由 [declare-foundation](./declare-foundation) 库统一实现, 在语法上具有一致性
+2. 通常来说, 与原有的界面库相比较, 编写同一应用的代码量有所减少
+3. 开发者只需编写纯 Python 代码, 其他工作由 GUI 库完成
 
 # 子项目说明
 
@@ -85,18 +82,13 @@ Declare GUI Project 分为以下几个子项目:
 
 | 项目 | 状态 |
 | ---- | ---- |
-| [declare-justpy](https://github.com/likianta/declare-justpy) | 开发中 |
+| [declare-justpy](https://github.com/likianta/declare-justpy) | 未启动 |
 | [declare-qml](https://github.com/likianta/declare-qml) | 已停止 |
-| [declare-qt](https://github.com/likianta/declare-qt) | 开发中 |
-| [declare-tkinter](https://github.com/likianta/declare-qt) | 未启动 |
+| [declare-qt](https://github.com/likianta/declare-qt) | 进行中 |
+| [declare-qtquick](https://github.com/likianta/declare-qtquick) | 进行中 |
+| [declare-tkinter](https://github.com/likianta/declare-tkinter) | 未启动 |
 | [declare-wxpython](https://github.com/likianta/declare-wxpython) | 未启动 |
 
 # 开发说明
 
-1. 每个子项目都应依赖于 declare-foundation 库, 并通过子类继承的方式修改细节实现
-2. 如果您对此项目感兴趣, 您可以通过聊天群组, 飞书文档 (主要) 或邮件方式进行即时和非即时的协作与沟通
-    1. 飞书文档邀请链接: TODO
-
-**时间表**
-
-预计将在 2021 年 6 月中旬完成 declare-qt 的核心开发工作. 其他子项目暂无明确时间.
+*TODO*
