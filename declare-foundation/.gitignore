@@ -1,1 +1,3 @@
 /dustbin/
+__pycache__
+*.pyc

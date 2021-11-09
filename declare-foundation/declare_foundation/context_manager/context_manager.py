@@ -1,5 +1,5 @@
 from .id_system import id_gen
-from ..typehint import TContext as T
+from .__ext__ import T
 
 
 class ContextManager:

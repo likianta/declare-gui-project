@@ -2,7 +2,7 @@ from lk_logger import lk
 
 from .context_manager import ctx_mgr
 from .id_system import id_mgr
-from ..typehint import TContextable as T
+from .__ext__ import T
 
 _pointer = None  # NOTE: this is a workaround for `ContextWrapper.build`.
 

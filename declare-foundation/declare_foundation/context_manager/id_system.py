@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-from ..typehint import TContext as T
+from .__ext__ import T
 
 
 class IdGenerator:
